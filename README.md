@@ -18,6 +18,9 @@ if __name__ == '__main__':
 ```
 ## 添加图标
 1. 软件图标
+直接在主函数中加入
+
 1. 软件小图标
+myWindow.setWindowIcon(QtGui.QIcon(":/icon.ico"))
 
 ## 打包

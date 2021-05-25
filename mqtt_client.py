@@ -1,4 +1,4 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
+﻿from PyQt5 import QtCore, QtGui, QtWidgets
 import paho.mqtt.client as mqtt
 import json
 import time
@@ -155,7 +155,7 @@ class Ui_MQTT(object):
         sizePolicy.setHeightForWidth(self.qos.sizePolicy().hasHeightForWidth())
         self.qos.setSizePolicy(sizePolicy)
         self.qos.setEditable(False)
-        self.qos.setMaxVisibleItems(1)
+        self.qos.setMaxVisibleItems(3)
         self.qos.setMaxCount(3)
         self.qos.setObjectName("qos")
         self.qos.addItem("")
@@ -278,7 +278,7 @@ class Ui_MQTT(object):
         return pubMessage
 
     def onclick_connect(self):
-        host = self.host.currentText()# QCommoBox用currentText()获取text
+        host = self.host.currentText()# QComboBox用currentText()获取text
         port = int(self.port.text())
         username = self.username.text()
         password = self.password.text()
@@ -341,6 +341,6 @@ if __name__ == '__main__':
     myWindow = QtWidgets.QMainWindow()
     window = Ui_MQTT()
     window.setupUi(myWindow)
-    # myWindow.setWindowIcon(QtGui.QIcon(":/icon.ico"))
+    myWindow.setWindowIcon(QtGui.QIcon(":/icon.ico"))# windows添加左上角小图标
     myWindow.show()
     sys.exit(mqtt_client.exec_())
