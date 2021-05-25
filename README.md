@@ -17,7 +17,7 @@ if __name__ == '__main__':
     sys.exit(mqtt_client.exec_())
 ```
 ## 添加图标
-1. 软件图标
+1. 软件图标  
 生成rpc文件
 转py
 在主窗口程序导入
