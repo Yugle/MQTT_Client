@@ -190,6 +190,7 @@ class Ui_MQTT(object):
         self.host.setItemText(0, _translate("MQTT", "192.168.1.41"))
         self.host.setItemText(1, _translate("MQTT", "192.168.1.29"))
         self.label_9.setText(_translate("MQTT", "Interval(s):"))
+        #9px 13px
         self.pubMessage.setHtml(_translate("MQTT", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
