@@ -278,7 +278,7 @@ class Ui_MQTT(object):
         return pubMessage
 
     def onclick_connect(self):
-        host = self.host.currentText()#QCommoBox用currentText()获取text
+        host = self.host.currentText()# QCommoBox用currentText()获取text
         port = int(self.port.text())
         username = self.username.text()
         password = self.password.text()
@@ -286,7 +286,7 @@ class Ui_MQTT(object):
         self.client.username_pw_set(username, password)
         self.client.on_connect = self.on_connect
         try:
-            self.client.connect(host, port, 60)
+            self.client.connect(host, port, 10)
             self.client.loop_start()
         except Exception as e:
             self._thread.setText(str(e), True)
@@ -341,6 +341,6 @@ if __name__ == '__main__':
     myWindow = QtWidgets.QMainWindow()
     window = Ui_MQTT()
     window.setupUi(myWindow)
-    myWindow.setWindowIcon(QtGui.QIcon(":/icon.ico"))
+    # myWindow.setWindowIcon(QtGui.QIcon(":/icon.ico"))
     myWindow.show()
     sys.exit(mqtt_client.exec_())
