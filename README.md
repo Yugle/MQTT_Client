@@ -27,3 +27,11 @@ if __name__ == '__main__':
 myWindow.setWindowIcon(QtGui.QIcon(":/icon.ico"))
 ```
 ## 打包
+1. MAC
+```
+pyinstaller --windowed --onefile --clean --noconfirm -i ./resource/icon.icns mqtt_client.py
+```
+2. Windows
+```
+pyinstaller -w -F -i .\resource\icon.ico --clean .\mqtt_client.py
+```
