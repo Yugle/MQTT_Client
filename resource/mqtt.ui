@@ -32,7 +32,7 @@
    <string>MQTT Client</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -42,6 +42,54 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="2" column="6" alignment="Qt::AlignHCenter">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Topic:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="7">
+      <widget class="QComboBox" name="sub_topic">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>+/#</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>dev/</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>opendata/</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="4" column="4" rowspan="2" colspan="4">
+      <widget class="QTextBrowser" name="subMessage"/>
+     </item>
+     <item row="4" column="0" colspan="4">
+      <widget class="QPushButton" name="publishButton">
+       <property name="text">
+        <string>Publish</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" colspan="3">
+      <widget class="QLineEdit" name="port"/>
+     </item>
      <item row="3" column="4" colspan="4">
       <widget class="QPushButton" name="subscribeButton">
        <property name="text">
@@ -49,17 +97,29 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="4" rowspan="2" colspan="4">
-      <widget class="QTextBrowser" name="subMessage"/>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Topic:</string>
+       </property>
+      </widget>
      </item>
-     <item row="2" column="7">
-      <widget class="QLineEdit" name="sub_topic"/>
+     <item row="1" column="4">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Password:</string>
+       </property>
+      </widget>
      </item>
      <item row="0" column="5" colspan="2">
       <widget class="QLineEdit" name="username"/>
      </item>
-     <item row="1" column="5" colspan="2">
-      <widget class="QLineEdit" name="password"/>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Times:</string>
+       </property>
+      </widget>
      </item>
      <item row="3" column="3">
       <widget class="QDoubleSpinBox" name="interval">
@@ -80,56 +140,8 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>Topic:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1" colspan="3">
-      <widget class="QLineEdit" name="pub_topic"/>
-     </item>
-     <item row="0" column="7">
-      <widget class="QPushButton" name="connectButton">
-       <property name="text">
-        <string>Connect</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="4">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Username:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Host:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1" colspan="3">
-      <widget class="QLineEdit" name="host"/>
-     </item>
-     <item row="1" column="4">
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>Password:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1" colspan="3">
-      <widget class="QLineEdit" name="port"/>
-     </item>
-     <item row="1" column="7">
-      <widget class="QPushButton" name="disconnectButton">
-       <property name="text">
-        <string>Disconnect</string>
-       </property>
-      </widget>
+     <item row="1" column="5" colspan="2">
+      <widget class="QLineEdit" name="password"/>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_2">
@@ -138,33 +150,58 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="0" colspan="4">
-      <widget class="QPushButton" name="publishButton">
+     <item row="1" column="7">
+      <widget class="QPushButton" name="disconnectButton">
        <property name="text">
-        <string>Publish</string>
+        <string>Disconnect</string>
        </property>
+      </widget>
+     </item>
+     <item row="2" column="4" alignment="Qt::AlignHCenter">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Qos:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1" colspan="3">
+      <widget class="QComboBox" name="pub_topic">
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>dev/</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>opendata/</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="0" column="1" colspan="3">
+      <widget class="QComboBox" name="host">
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>192.168.1.41</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>192.168.1.29</string>
+        </property>
+       </item>
       </widget>
      </item>
      <item row="3" column="2" alignment="Qt::AlignHCenter">
       <widget class="QLabel" name="label_9">
        <property name="text">
         <string>Interval(s):</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QSpinBox" name="times">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimum">
-        <number>1</number>
-       </property>
-       <property name="maximum">
-        <number>99999</number>
        </property>
       </widget>
      </item>
@@ -190,32 +227,75 @@ p, li { white-space: pre-wrap; }
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_6">
+     <item row="0" column="7">
+      <widget class="QPushButton" name="connectButton">
        <property name="text">
-        <string>Times:</string>
+        <string>Connect</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="6" alignment="Qt::AlignHCenter">
-      <widget class="QLabel" name="label_7">
+     <item row="0" column="4">
+      <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Topic:</string>
+        <string>Username:</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="4" alignment="Qt::AlignHCenter">
-      <widget class="QLabel" name="label_8">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
        <property name="text">
-        <string>Qos:</string>
+        <string>Host:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QSpinBox" name="times">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>99999</number>
        </property>
       </widget>
      </item>
      <item row="2" column="5">
-      <widget class="QSpinBox" name="qos">
-       <property name="maximum">
-        <number>2</number>
+      <widget class="QComboBox" name="qos">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
+       <property name="editable">
+        <bool>false</bool>
+       </property>
+       <property name="maxVisibleItems">
+        <number>1</number>
+       </property>
+       <property name="maxCount">
+        <number>3</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2</string>
+        </property>
+       </item>
       </widget>
      </item>
     </layout>
