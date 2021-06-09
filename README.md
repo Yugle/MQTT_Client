@@ -18,6 +18,7 @@ if __name__ == '__main__':
 ```
 ## 添加图标
 1. 软件图标  
+
 新建rpc文件
 ```
 <!DOCTYPE RCC><RCC version="1.0">
@@ -35,6 +36,7 @@ pyrcc5 -o resources_rc.py resources_rc.qrc
 import resources_rc
 MainWindow.setWindowIcon(QtGui.QIcon(':/images/image.ico'))
 ```
+
 1. 软件小图标
 ```
 myWindow.setWindowIcon(QtGui.QIcon(":/icon.ico"))
