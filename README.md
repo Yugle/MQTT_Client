@@ -33,7 +33,6 @@ pyrcc5 -o resources_rc.py resources_rc.qrc
 - 导入到主窗口程序
 ```
 import resources_rc
-MainWindow.setWindowIcon(QtGui.QIcon(':/images/image.ico'))
 ```
 2. 软件小图标
 ```
