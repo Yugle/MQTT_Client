@@ -38,10 +38,83 @@ import resources_rc
 ```
 myWindow.setWindowIcon(QtGui.QIcon(":/icon.ico"))
 ```
+## 带文件打包
+1. 获取程序运行临时文件夹路径
+```
+def getResourcePath(self, relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+```
+2. spec
+```
+# -*- mode: python ; coding: utf-8 -*-
+
+block_cipher = None
+
+a = Analysis(['k8s_ui.py'],
+             pathex=['/Users/phil/Desktop/k8s_client'],
+             binaries=[],
+             datas=[],
+             hiddenimports=[],
+             hookspath=[],
+             runtime_hooks=[],
+             excludes=[],
+             win_no_prefer_redirects=False,
+             win_private_assemblies=False,
+             cipher=block_cipher,
+             noarchive=False)
+
+def extra_datas(mydir):
+    def rec_glob(p, files):
+        import os
+        import glob
+        for d in glob.glob(p):
+            if os.path.isfile(d):
+                files.append(d)
+            rec_glob("%s/*" % d, files)
+    files = []
+    rec_glob("%s/*" % mydir, files)
+    extra_datas = []
+    for f in files:
+        extra_datas.append((f, f, 'DATA'))
+
+    return extra_datas
+
+# append the 'config' dir
+a.datas += extra_datas('config')    ###这里是自己的资源文件夹
+       
+pyz = PYZ(a.pure, a.zipped_data,
+             cipher=block_cipher)
+exe = EXE(pyz,
+          a.scripts,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
+          [],
+          name='k8s_ui',
+          debug=False,
+          bootloader_ignore_signals=False,
+          strip=False,
+          upx=True,
+          upx_exclude=[],
+          runtime_tmpdir=None,
+          console=False , icon='resource/icon.icns')
+app = BUNDLE(exe,
+             name='k8s_ui.app',
+             icon='./resource/icon.icns',
+             bundle_identifier=None)
+```
 ## 打包
 1. MAC
 ```
 pyinstaller --windowed --onefile --clean --noconfirm -i ./resource/icon.icns mqtt_client.py
+pyinstaller --windowed --onefile --clean --noconfirm -i ./resource/icon.icns mqtt_client.spec
 ```
 2. Windows
 ```
